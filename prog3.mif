@@ -1,0 +1,23 @@
+-- program memory file for new program
+
+DEPTH = 256;
+WIDTH = 16;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = BIN;
+CONTENT
+BEGIN
+
+00 : 1111100001010000;	-- move 10 to RA
+01 : 1111100001010001;	-- move 10 to RB
+02 : 1111100000001010;	-- move 1 to RC
+03 : 1001000010000011;	-- RD <= RA-RC
+04 : 1111001100000000;	-- RA <= RD
+05 : 1001001111000001;	-- decrement RB
+06 : 0110011000000000;	-- store RD to the output
+07 : 0011000000001001;  -- branch (conditional) to line 9 if RB is 0 (loop has run 10 times)
+08 : 0010000000000011;	-- branch (unconditional) back to line 3
+09 : 0011110000000000;	-- exit
+
+[0A..FF] : 1111111111111111;
+
+END
